@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Собрание игуменов и игумений — масштаб приёма</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700&family=PT+Sans:wght@0,400;0,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ECE7DC; --panel:#FBFAF6; --panel2:#F5F1E7;
+    --ink:#23201B; --muted:#6E6555; --faint:#9A9081;
+    --wine:#6E2A2A; --gold:#A67C1A; --line:#DDD4C2; --radius:12px; --wrap:960px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"PT Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:16px;line-height:1.6}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:"Spectral",Georgia,serif;font-weight:600;line-height:1.12;margin:0}
+
+  header.hero{padding:50px 0 30px;text-align:center}
+  .ornament{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold);margin-bottom:22px}
+  .ornament .rule{height:1px;width:76px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .ornament .rule.r{background:linear-gradient(90deg,var(--gold),transparent)}
+  .kicker{letter-spacing:.15em;text-transform:uppercase;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:14px}
+  h1{font-size:clamp(28px,5.4vw,46px);max-width:17ch;margin:0 auto 10px}
+  .place{font-family:"Spectral",serif;font-style:italic;color:var(--muted);font-size:clamp(16px,2.6vw,21px);margin-bottom:8px}
+  .org{font-size:13.5px;color:var(--faint);margin-bottom:0}
+
+  /* hero big numbers */
+  .headline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;background:var(--panel);margin-top:30px}
+  .headline .h{padding:22px 14px}
+  .headline .h + .h{border-left:1px solid var(--line)}
+  .headline .n{font-family:"Spectral",serif;font-weight:700;color:var(--wine);font-size:clamp(30px,5vw,44px);line-height:1}
+  .headline .l{font-size:13px;color:var(--muted);margin-top:8px}
+  @media(max-width:640px){
+    .headline{grid-template-columns:repeat(2,1fr)}
+    .headline .h:nth-child(3){border-left:none}
+    .headline .h:nth-child(n+3){border-top:1px solid var(--line)}
+  }
+
+  section{margin-top:42px}
+  .sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+  .sec-h h2{font-size:clamp(22px,3.4vw,28px)}
+  .sec-h .line{flex:1;height:1px;background:var(--line)}
+  .lead{color:var(--muted);font-size:15px;margin:-6px 0 16px;max-width:64ch}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px 16px}
+  .stat .n{font-family:"Spectral",serif;font-size:clamp(26px,3.4vw,34px);font-weight:600;color:var(--wine);line-height:1}
+  .stat .u{font-size:13px;color:var(--muted);margin-top:7px}
+
+  .band{background:var(--wine);color:#fff;border-radius:var(--radius);padding:24px;display:grid;
+    grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+  @media(max-width:640px){.band{grid-template-columns:1fr;gap:16px}}
+  .band .n{font-family:"Spectral",serif;font-size:32px;font-weight:700;line-height:1}
+  .band .l{font-size:13px;color:rgba(255,255,255,.82);margin-top:7px}
+
+  .summacard{background:var(--panel2);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;text-align:center}
+  .summacard .n{font-family:"Spectral",serif;font-size:34px;font-weight:700;color:var(--wine);line-height:1}
+  .summacard .l{font-size:13.5px;color:var(--muted);margin-top:8px}
+
+  .prog{border-left:2px solid var(--gold);margin-left:6px}
+  .prog .step{position:relative;padding:0 0 15px 22px}
+  .prog .step::before{content:"";position:absolute;left:-7px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--wine);border:2px solid var(--bg)}
+  .prog .t{font-family:"Spectral",serif;font-weight:600;color:var(--wine);font-size:16px}
+  .prog .d{font-size:14px;color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);margin-top:46px;padding:24px 0 48px;text-align:center;color:var(--muted)}
+  footer .v{font-family:"Spectral",serif;font-style:italic;font-weight:500;color:var(--ink);font-size:19px;letter-spacing:.01em}
+
+  @media (prefers-reduced-motion:no-preference){
+    .reveal{animation:f .7s ease both}@keyframes f{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap reveal">
+    <div class="ornament"><span class="rule"></span><span>◆</span><span class="rule r"></span></div>
+    <div class="kicker">Синодальный отдел по монастырям и монашеству</div>
+    <h1>Собрание игуменов и игумений</h1>
+    <div class="place">Храм Христа Спасителя, Москва · 23 сентября 2026</div>
+    <div class="headline">
+      <div class="h"><div class="n">~700</div><div class="l">гостей</div></div>
+      <div class="h"><div class="n">~280</div><div class="l">человек в команде приёма</div></div>
+      <div class="h"><div class="n">6</div><div class="l">залов задействовано</div></div>
+      <div class="h"><div class="n">1,7 т</div><div class="l">продуктов собрано</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="sec-h"><h2>Приём в цифрах</h2><span class="line"></span></div>
+    <div class="stats">
+      <div class="stat"><div class="n">3</div><div class="u">трапезы за день: фуршет, обед, фуршет</div></div>
+      <div class="stat"><div class="n">1 160</div><div class="u">порций подано за день</div></div>
+      <div class="stat"><div class="n">30</div><div class="u">наименований блюд</div></div>
+      <div class="stat"><div class="n">16</div><div class="u">направлений работы</div></div>
+      <div class="stat"><div class="n">14</div><div class="u">координаторов</div></div>
+      <div class="stat"><div class="n">22</div><div class="u">обителей-благотворителей</div></div>
+      <div class="stat"><div class="n">195</div><div class="u">задач в тайминге мероприятия</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h"><h2>Люди</h2><span class="line"></span></div>
+    <p class="lead">В подготовке и проведении приёма задействовано около 280 человек — сёстры обители, учащиеся духовных школ, добровольцы и привлечённый персонал.</p>
+    <div class="summacard">
+      <div class="n">≈280</div>
+      <div class="l">человек в команде приёма — сёстры, учащиеся духовных школ, добровольцы и персонал</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h"><h2>Обеспечение</h2><span class="line"></span></div>
+    <p class="lead">Масштаб посуды, мебели и снабжения, подготовленных к приёму.</p>
+    <div class="stats">
+      <div class="stat"><div class="n">15 358</div><div class="u">единиц посуды и приборов</div></div>
+      <div class="stat"><div class="n">127</div><div class="u">столов · 254 метра</div></div>
+      <div class="stat"><div class="n">900</div><div class="u">пуфиков</div></div>
+      <div class="stat"><div class="n">350 м</div><div class="u">скатертей</div></div>
+      <div class="stat"><div class="n">375 л</div><div class="u">кипятка</div></div>
+      <div class="stat"><div class="n">1 000 л</div><div class="u">питьевой воды</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-h"><h2>Ход дня</h2><span class="line"></span></div>
+    <div class="prog">
+      <div class="step"><div class="t">Утренний фуршет · встреча гостей</div><div class="d">08:30–10:00</div></div>
+      <div class="step"><div class="t">Первая часть Собрания</div></div>
+      <div class="step"><div class="t">Общая трапеза · обед</div><div class="d">12:00–13:30 · Патриарший и Белый залы, отдельный стол в Сергиевском</div></div>
+      <div class="step"><div class="t">Вторая часть Собрания</div></div>
+      <div class="step"><div class="t">Заключительный фуршет</div><div class="d">15:30–17:00 · Сергиевский и Аван-залы</div></div>
+    </div>
+  </section>
+
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="v">Марфо-Мариинская Обитель Милосердия</div>
+  </div>
+</footer>
+
+</body>
+</html>
